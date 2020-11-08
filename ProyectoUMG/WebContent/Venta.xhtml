@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+ 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	<h:head>
+    <title>Inventario Materiales</title>
+    <style type="text/css">
+    .navegacion a {
+    	text-decoration: none;/*elimina la linea bajo la palabra*/
+    	font-size: 1.3rem; /**= 18 pixeles**/
+	}
+	.navegacion a:hover{/*pseudoselector mas comun, le da un color cuando ubicamos el cursor sobre el enlace*/
+    	color: #71b100;
+	}
+        button{
+		background-color:blue;
+		color:white;
+	}
+	.Contenedor{
+		background-color:orange;
+		width:350px;
+		height:185px;
+		border-color:red;
+    </style>
+	</h:head>
+	<body>
+    <h:form id="formulario">
+    <center>
+    <h2>Registrar venta</h2>
+    <div class="Contenedor">
+    <br/>
+    <table>
+          <tr>
+                <td>IdProducto:</td>
+             <td>
+               <h:inputText value="#{ventaControl.venta.idproducto}"/>
+             </td>    
+          </tr>
+          <tr>
+                <td>Producto:</td>
+             <td>
+               <h:inputText value="#{ventaControl.venta.descripcion}" />
+             </td>    
+          </tr>
+          <tr>
+                <td>Color:</td>
+             <td>
+               <h:inputText value="#{ventaControl.venta.color}" />
+             </td>  
+          </tr>
+          <tr>
+                <td>Cantidad:</td>
+             <td>
+             	<h:inputText id="cantidad" value="#{ventaControl.venta.cantidad}" onchange="calcular()"/>
+             </td>  
+          </tr>
+          <tr>
+                <td>Precio:</td>
+             <td>
+             	<h:inputText id="precio" value="#{ventaControl.venta.precio}" onchange="calcular()"/>
+             </td>  
+          </tr>
+          <tr>
+                <td>Total:</td>
+             <td>
+               <h:inputText id="total" value="#{ventaControl.venta.total}" onchange="calcular()"/>
+             </td>  
+          </tr>
+        </table>
+    <br/>
+    <h:commandButton value="Guardar" action="#{ventaControl.guardar()}" oncomplete="limpiarForm()"/><br/><br/>
+    <nav class="navegacion">
+   		<a href="index.xhtml">Volver</a>
+    </nav>
+    </div>
+    </center>
+    </h:form>
+	</body>
+	<script type="text/javascript">
+    function calcular() {
+    	var a = parseFloat(document.getElementById("formulario:cantidad").value) || 0,
+        b = parseFloat(document.getElementById("formulario:precio").value) || 0;
+        document.getElementById("formulario:total").value = a*b;
+    }
+    
+    function limpiarForm()
+    {                        document.getElementById("tabla").reset();
+    }
+  </script>
+	
+</html>

@@ -1,0 +1,19 @@
+<html>
+  <head>
+
+  </head>
+
+  <body>
+      <input type="text" id="1"  oninput="calcular()"/>
+      <input type="text" id="2" oninput="calcular()"/>
+      <input type="text" id="total" readonly="readonly"/>
+
+  </body>    
+  <script type="text/javascript">
+    function calcular() {
+        var a = parseFloat(document.getElementById("1").value) || 0,
+        b = parseFloat(document.getElementById("2").value) || 0;
+        document.getElementById("total").value = a*b;
+    }
+  </script>
+</html>
